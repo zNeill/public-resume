@@ -1,0 +1,166 @@
+//Define Page Size (see paper-css documentation)
+@page { size: letter; }
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.the-thing {
+  margin: 0.25in;
+  background-color: #fff;
+  color: #222;
+  display:none;
+}
+
+
+h1 {
+  font-size: 2em;
+  margin: 5px 10px;
+  border-bottom: 3px solid darkgreen;
+}
+h2 {
+  font-size: 1.5em;
+  margin: 5px 10px;
+}
+
+h3 {
+  font-size: 1.25em;
+  margin:5px 10px;
+}
+
+h4 {
+  font-size:1em;
+  margin: 5px 10px;
+}
+
+.wrapper {
+  margin: 20px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: min-max(100px, 1fr);
+}
+
+@media screen {
+  .sheet {
+    max-width: 216mm;
+    margin:20px;
+  }
+}
+
+
+.wrapper > * {
+  color: #888;
+  border-radius: 8px;
+  border-color:blue;
+  border-style:dotted;
+  border-width: 2px;
+  /* needed for the floated layout*/
+  margin-bottom: 10px;
+}
+
+.header {
+  grid-column: 1 / 4;
+}
+
+
+.footer {
+  grid-column: 1 / 4;
+}
+
+.sidebar {
+  grid-column: 4 / 5;
+  grid-row: 1 / 4;
+}
+
+.content {
+  background-color:#556;
+  background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+                    linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+                    linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+                    linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+                    linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a), 
+                    linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
+  background-size:80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+.chat {
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 90% 90%, 100% 100%, 61% 90%, 0 90%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 90% 90%, 100% 100%, 61% 90%, 0 90%);
+  grid-column: 4 / 5;
+  grid-row: 
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b4e391+0,61c419+50,b4e391+100;Green+3D */
+  background: #b4e391; /* Old browsers */
+  background: -moz-linear-gradient(top, #b4e391 0%, #61c419 50%, #b4e391 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #b4e391 0%,#61c419 50%,#b4e391 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #b4e391 0%,#61c419 50%,#b4e391 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#b4e391',GradientType=0 ); /* IE6-9 */
+  border:unset;
+}
+.chat > ul {
+  list-style-type: none;
+}
+.job {
+  grid-column: 1 / span 3;
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 25% 75%;
+  -webkit-clip-path: polygon(0% 0%, 98% 0, 100% 50%, 98% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 98% 0, 100% 50%, 98% 100%, 0% 100%);
+  border-left: 5px solid green;
+  border-right: unset;
+  border-top: unset;
+  border-bottom: unset;
+  background-color: #CCC;
+  color: #000;
+  padding: 10px;
+  border-radius: unset;
+}
+.job .company {
+  width:100%;
+  grid-column: 1 / 2;
+  font-size: 2em;
+}
+.job .corner-rt {
+  grid-column: 2 / 3;
+  text-align:right;
+  width:100%;
+  padding-top:5px;
+  padding-right: 10px;
+}
+.job > p {
+  grid-column: 1 / 3;
+}
+/* We need to set the widths used on floated items back to auto, and remove the bottom margin as when we have grid we have gaps. */
+@supports (display: grid) {
+
+  .wrapper > * {
+    width: auto;
+    margin: 0;
+  }
+
+  .the-thing {
+    display: block;
+  }
+
+  .go-away-text {
+    display: none;
+  }
+
+  .header, .footer {
+    clear: unset;
+  }
+}
+
+@media print {
+  .job {
+    border: 5px solid black;
+    border-radius: 0 20px 0 0;
+    -webkit-clip-path: unset;
+    clip-path: unset;
+  }
+}
